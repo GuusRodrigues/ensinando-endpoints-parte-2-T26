@@ -47,7 +47,7 @@ class PlanetaServices {
         let response = await client.post("/planets/", planetaData)
         return response.data
     } catch  (error){
-        return `{Não foi possível criar o planeta: ${error}`;
+        return `{Não foi possível criar o planeta: ${error}}`;
     }
 
   }
@@ -58,7 +58,7 @@ class PlanetaServices {
         let response = await client.put(`/planets/${id}`, planetaData)
         return response.data
     } catch  (error){
-        return `{Não foi possível atualizar o planeta: ${error}`;
+        return `{Não foi possível atualizar o planeta: ${error}}`;
     }
   }
 
@@ -67,7 +67,7 @@ class PlanetaServices {
         let response = await client.delete(`/planets/${id}`)
         return response.data
     } catch  (error){
-        return `{Não foi possível deletar o planeta: ${error}`;
+        return `{Não foi possível deletar o planeta: ${error}}`;
     }
   }
 
