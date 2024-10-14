@@ -7,7 +7,7 @@ class PlaceholderServices {
       const response = await client.get("/posts/");
       return { dados: response.data };
     } catch (error: any) {
-      return { erro: `Erro ao buscar dados: ${error.message}` };
+      throw new Error("Erro ao buscar dados: " + error.message);
     }
   }
 
@@ -17,10 +17,10 @@ class PlaceholderServices {
       if (response.data) {
         return { dados: response.data };
       } else {
-        return { erro: 'Post não encontrado!' };
+        throw new Error("Post não encontrado.");
       }
     } catch (error: any) {
-      return { erro: `Erro ao buscar dados: ${error.message}` };
+      throw new Error("Erro ao buscar dados: " + error.message);
     }
   }
 
@@ -29,7 +29,7 @@ class PlaceholderServices {
       const response = await client.post("/posts/", postData);
       return { dados: response.data };
     } catch (error: any) {
-      return { erro: `Não foi possível criar o Post: ${error.message}` };
+      throw new Error("Não foi possível criar o post: " + error.message);
     }
   }
 
@@ -38,7 +38,7 @@ class PlaceholderServices {
       const response = await client.put(`/posts/${id}`, postData);
       return { dados: response.data };
     } catch (error: any) {
-      return { erro: `Não foi possível atualizar o Post: ${error.message}` };
+      throw new Error("Não foi possível atualizar o post: " + error.message);
     }
   }
 
@@ -47,7 +47,7 @@ class PlaceholderServices {
       await client.delete(`/posts/${id}`);
       return { mensagem: 'Post deletado com sucesso.' };
     } catch (error: any) {
-      return { erro: `Não foi possível deletar o Post: ${error.message}` };
+      throw new Error("Não foi possível deletar o post: " + error.message);
     }
   }
 }
